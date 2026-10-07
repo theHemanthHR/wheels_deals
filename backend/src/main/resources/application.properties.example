@@ -1,0 +1,58 @@
+spring.application.name=ecom-proj
+server.port=8080
+
+# ---------- Database ----------
+spring.datasource.url=jdbc:postgresql://localhost:5432/your_db_name
+spring.datasource.username=your_username
+spring.datasource.password=your_password
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.open-in-view=false
+
+spring.sql.init.mode=always
+spring.jpa.defer-datasource-initialization=true
+
+# ---------- File Upload ----------
+spring.servlet.multipart.enabled=true
+spring.servlet.multipart.max-file-size=5MB
+spring.servlet.multipart.max-request-size=30MB
+app.upload.dir=uploads
+app.upload.base-url=http://localhost:8080/uploads
+
+# ---------- JWT ----------
+app.jwt.secret=YOUR_RANDOM_SECRET_KEY_MIN_32_CHARS
+app.jwt.access-token-ttl-ms=900000
+app.jwt.refresh-token-ttl-ms=604800000
+app.jwt.issuer=ecom-proj
+
+# ---------- Google OAuth2 ----------
+spring.security.oauth2.client.registration.google.client-id=YOUR_GOOGLE_CLIENT_ID
+spring.security.oauth2.client.registration.google.client-secret=YOUR_GOOGLE_CLIENT_SECRET
+spring.security.oauth2.client.registration.google.scope=openid,profile,email
+app.oauth2.redirect-uri=http://localhost:5173/oauth2/redirect
+
+# ---------- Google Maps ----------
+app.google.maps.api-key=YOUR_GOOGLE_MAPS_API_KEY
+
+# ---------- SMS (Twilio) ----------
+app.sms.enabled=false
+app.sms.provider=twilio
+app.sms.account-sid=YOUR_TWILIO_ACCOUNT_SID
+app.sms.auth-token=YOUR_TWILIO_AUTH_TOKEN
+app.sms.from-number=YOUR_TWILIO_PHONE_NUMBER
+
+# ---------- CORS ----------
+app.cors.allowed-origins=http://localhost:5173,http://localhost:3000
+
+# ---------- Swagger ----------
+springdoc.swagger-ui.path=/swagger-ui.html
+springdoc.api-docs.path=/v3/api-docs
+
+# ---------- Seed ----------
+app.seed.admin.email=admin@ecom.local
+app.seed.admin.password=Admin@12345
+
+# ---------- Logging ----------
+logging.level.org.springframework.security=INFO
+logging.level.com.ecom=DEBUG

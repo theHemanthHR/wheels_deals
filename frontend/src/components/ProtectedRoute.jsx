@@ -1,0 +1,11 @@
+import { Navigate, useLocation } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+
+export default function ProtectedRoute({ children, requireAdmin = false }) {
+  const { isAuthenticated, isAdmin, ready } = useAuth();
+  const location = useLocation();
+  if (!ready) return null;
+  if (!isAuthenticated) return <Navigate to="/login" state={{ from: location }} replace />;
+  if (requireAdmin && !isAdmin) return <Navigate to="/" replace />;
+  return children;
+}
